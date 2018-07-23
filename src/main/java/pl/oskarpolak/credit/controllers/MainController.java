@@ -18,8 +18,10 @@ public class MainController {
     @PostMapping("/")
     public String index(@ModelAttribute("creditForm") CreditForm creditForm,
                         Model model){
-        if((creditForm.getSalary() - creditForm.getCosts()) * 0.70 > creditForm.getCreditValue() / creditForm.getCreditTime()){
+        System.out.println(creditForm);
+        if((creditForm.getSalary() - creditForm.getCosts()) * 0.30 > creditForm.getCreditValue() / creditForm.getCreditTime()){
              model.addAttribute("someInfo", "Udzielono kredytu");
+             return "creditForm";
         }
         model.addAttribute("someInfo", "Nie udzielono kredytu!!!");
         return "creditForm";
