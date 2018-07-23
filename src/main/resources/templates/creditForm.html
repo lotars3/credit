@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Kredytowanie</title>
+</head>
+<body>
+    <span th:if="${someInfo != null}" th:text="${someInfo}"></span>
+
+    <form th:if="${someInfo == null}" method="post" action="/" th:object="${creditForm}">
+        Kwota kredytu: <input type="number" th:field="*{creditValue}"><br/>
+        Czas kredytu: <input type="number" th:field="*{creditTime}"><br/>
+        Mc wynagrodzenie: <input type="number" th:field="*{salary}"><br/>
+        Koszty per mc: <input type="number" th:field="*{costs}"><br/>
+        <input type="submit" value="Wyślij"/>
+    </form>
+</body>
+</html>
