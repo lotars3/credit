@@ -7,10 +7,14 @@
 <body>
     <span th:if="${someInfo != null}" th:text="${someInfo}"></span>
 
-    <form th:if="${someInfo == null}" method="post" action="/" th:object="${creditForm}">
+    <form method="post" action="/" th:object="${creditForm}">
+        <span th:if="${#fields.hasErrors('creditValue')}" th:errors="*{creditValue}">Error</span>
         Kwota kredytu: <input type="number" th:field="*{creditValue}"><br/>
+        <span th:if="${#fields.hasErrors('creditTime')}" th:errors="*{creditTime}">Error</span>
         Czas kredytu: <input type="number" th:field="*{creditTime}"><br/>
+        <span th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Error</span>
         Mc wynagrodzenie: <input type="number" th:field="*{salary}"><br/>
+        <span th:if="${#fields.hasErrors('costs')}" th:errors="*{costs}">Error</span>
         Koszty per mc: <input type="number" th:field="*{costs}"><br/>
         <input type="submit" value="Wyślij"/>
     </form>
